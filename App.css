@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --fondo: #0b0e1a;
+  --fondo-tarjeta: #151a30;
+  --acento: #7c5cff;
+  --acento-claro: #a78bfa;
+  --texto: #e8e9f3;
+  --texto-suave: #9aa0b8;
+  --vivo: #4ade80;
+  --muerto: #f87171;
+  --desconocido: #9aa0b8;
+  --borde: #262c4a;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--fondo);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(124, 92, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(167, 139, 250, 0.12), transparent 40%);
+  color: var(--texto);
+}
+
+/* Barra de navegación */
+.navbar {
+  background-color: rgba(11, 14, 26, 0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--borde);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-marca {
+  margin: 0;
+  color: var(--texto);
+  letter-spacing: 0.5px;
+}
+
+.navbar-enlaces a {
+  color: var(--texto-suave);
+  margin-left: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.navbar-enlaces a:hover {
+  color: var(--acento-claro);
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+/* Página de inicio */
+.inicio {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.inicio h1 {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, var(--acento-claro), var(--acento));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.inicio p {
+  color: var(--texto-suave);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 12px 26px;
+  background: linear-gradient(90deg, var(--acento), var(--acento-claro));
+  color: #0b0e1a;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 92, 255, 0.4);
+}
+
+/* Página de personajes */
+section h1 {
+  margin-bottom: 20px;
+}
+
+.buscador {
+  margin-bottom: 28px;
+  display: flex;
+  gap: 10px;
+}
+
+.buscador input {
+  flex: 1;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background-color: var(--fondo-tarjeta);
+  color: var(--texto);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.buscador input:focus {
+  border-color: var(--acento);
+}
+
+.buscador button {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background-color: transparent;
+  color: var(--texto-suave);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.buscador button:hover {
+  background-color: var(--acento);
+  color: #0b0e1a;
+  border-color: var(--acento);
+}
+
+/* Lista y tarjetas de personajes */
+.lista-personajes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.tarjeta {
+  background-color: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tarjeta-imagen {
+  position: relative;
+}
+
+.tarjeta-imagen img {
+  width: 100%;
+  display: block;
+}
+
+.estado-punto {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(11, 14, 26, 0.8);
+}
+
+.estado-punto.vivo {
+  background-color: var(--vivo);
+}
+
+.estado-punto.muerto {
+  background-color: var(--muerto);
+}
+
+.estado-punto.desconocido {
+  background-color: var(--desconocido);
+}
+
+.tarjeta-info {
+  padding: 16px;
+}
+
+.tarjeta-info h2 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.tarjeta-info p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.tarjeta-info strong {
+  color: var(--texto);
+}
+
+/* Mensajes de estado */
+.mensaje-carga,
+.mensaje-vacio {
+  color: var(--texto-suave);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.mensaje-error {
+  color: var(--muerto);
+  text-align: center;
+  padding: 40px 0;
+  font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .lista-personajes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lista-personajes {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buscador {
+    flex-direction: column;
+  }
+
+  .buscador input {
+    max-width: 100%;
+  }
+}
